@@ -27,7 +27,7 @@ Pokemon.getPokemon = function getPokemon(dataset, name, prop) {
 let index = 0;
 Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, attsp, defsp, speed, gen, leg) {
   let b = new Pokemon();
-  b.id = id;
+  b.id = Pokemon.makeID(id);
   b.name = name;
   b.elem1 = elem1;
   b.elem2 = elem2;
@@ -83,26 +83,6 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
     }
   }
 
-  // if (b.name.indexOf('Primal ') !== -1) {
-  //   index++;
-  //   linkid = Pokemon.makeID(b.id - index);
-  // }
-  // if (b.name.indexOf('Deoxys ') !== -1) {
-  //   index++;
-  //   linkid = Pokemon.makeID(b.id - index);
-  // }
-  // if (b.name.indexOf('Wormadam ') !== -1) {
-  //   index++;
-  //   linkid = Pokemon.makeID(b.id - index);
-  // }
-  // if (b.name.indexOf('Mow ') !== -1) {
-  //   index++;
-  //   linkid = Pokemon.makeID(b.id - index);
-  // }
-  // if (b.name.indexOf('Frost ') !== -1) {
-  //   index++;
-  //   linkid = Pokemon.makeID(b.id - index);
-  // }
   b.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+linkid+".png";
   return b;
 }

@@ -101,8 +101,8 @@ function normalize(combat, pokemon) {
   let dataset = [];
   for (let i = 0; i < combat.length; i++) {
     let winner = 0;
-    let pokemon1 = Pokemon.getPokemon(pokemon, (combat[i].first), 'id');
-    let pokemon2 = Pokemon.getPokemon(pokemon, (combat[i].second), 'id');
+    let pokemon1 = Pokemon.getPokemon(pokemon, Pokemon.makeID(combat[i].first), 'id');
+    let pokemon2 = Pokemon.getPokemon(pokemon, Pokemon.makeID(combat[i].second), 'id');
     if (combat[i].first === combat[i].winner) {
       winner = 0;
     } else {
@@ -110,8 +110,8 @@ function normalize(combat, pokemon) {
     }
    //let data= {};
     let data = {
-      pokemon1:combat[i].first,
-      pokemon2:combat[i].second,
+      pokemon1:Pokemon.makeID(combat[i].first),
+      pokemon2:Pokemon.makeID(combat[i].second),
       input: [
         // Pokemon1
         maxvalues.elemarr.indexOf(pokemon1.elem1)/maxvalues.elem1,
