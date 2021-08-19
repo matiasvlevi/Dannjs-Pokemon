@@ -15,7 +15,7 @@ function main(pokedex) {
     let h3name = document.createElement('h3');
     h3name.textContent = pokedex[index].name;
     let hp = document.createElement('h3');
-    hp.textContent =  " HP: " + pokedex[index].h;
+    hp.textContent =  " HP: " + pokedex[index].hp;
     let atk = document.createElement('h3');
     atk.textContent = " Atk: " + pokedex[index].attack + " / sp " + pokedex[index].attack_sp;
     let def = document.createElement('h3');

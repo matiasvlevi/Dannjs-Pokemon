@@ -24,7 +24,7 @@ Pokemon.getPokemon = function getPokemon(dataset, name, prop) {
   })
   return pokemon;
 };
-let index= 0;
+let index = 0;
 Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, attsp, defsp, speed, gen, leg) {
   let b = new Pokemon();
   b.id = id;
@@ -39,7 +39,7 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
   b.speed = speed;
   b.generation = gen;
   b.lengendary = leg;
-  let linkid = Pokemon.makeID(b.id);
+  let linkid = Pokemon.makeID(b.id - index);
   if (b.name.indexOf('Mega') !== -1) {
     index++;
     linkid = Pokemon.makeID(b.id - index);
