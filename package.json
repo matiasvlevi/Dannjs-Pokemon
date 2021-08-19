@@ -1,0 +1,16 @@
+{
+  "name": "Dannjs-Pokemon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "start index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dannjs": "^2.2.11",
+    "fs": "0.0.1-security"
+  }
+}
