@@ -41,7 +41,7 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
   b.lengendary = leg;
   let linkid = Pokemon.makeID(b.id);
   if (b.name.indexOf('Mega') !== -1) {
-    linkid-=1;
+    linkid = Pokemon.makeID(b.id - 1);
   }
 
   b.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+linkid+".png";
