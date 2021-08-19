@@ -13,6 +13,7 @@
   "dependencies": {
     "dannjs": "^2.2.11",
     "express.js": "^1.0.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "progress": "^2.0.3"
   }
 }
