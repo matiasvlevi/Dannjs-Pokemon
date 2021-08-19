@@ -10,7 +10,8 @@ function parse(path, Struct) {
   let database = [];
   for (let i = 0; i < lines.length; i++) {
     let data = lines[i].split(',');
-    database.push(Struct.createBlob.apply(Struct, data));
+    let pokemon = Struct.createBlob.apply(Struct, data);
+    database.push(pokemon);
   }
   return database;
 }
@@ -18,16 +19,19 @@ class Combat {
   constructor(){
 
   }
-  static createBlob(first,second,winnder) {
+  static createBlob(first,second,winner) {
     let b = new Combat();
     b.first = first;
     b.second = second;
-    b.winner = winnder;
-    return b
+    b.winner = winner;
+    return b;
   }
 }
 
 
 let pokedex = parse('./dataset/pokemon.csv', Pokemon);
-let combats = parse('./dataset/combats.csv', Combat)
-console.log(pokedex)
+let combats = parse('./dataset/combats.csv', Combat);
+console.log(combats)
+
+fs.writeFileSync('./parsed/combats.json', JSON.stringify(combats));
+fs.writeFileSync('./parsed/pokemon.json', JSON.stringify(pokedex));
