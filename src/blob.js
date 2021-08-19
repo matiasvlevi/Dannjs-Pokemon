@@ -40,10 +40,11 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
   b.generation = gen;
   b.lengendary = leg;
   let linkid = Pokemon.makeID(b.id - index);
-  if (b.name.indexOf('Mega ') !== -1 && b.name.indexOf('Mega Lucario') === -1) {
-    index++;
-    linkid = Pokemon.makeID(b.id - index);
-  }
+
+  let exclude = [
+    'Mega Lopunny',
+  ]
+
   let list = [
     'Primal ',
     'Deoxys ',
@@ -69,6 +70,12 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
     'Black ',
     'White '
   ]
+
+    if (b.name.indexOf('Mega ') !== -1 && b.name.indexOf(exclude[0]) === -1 && b.name.indexOf(exclude[1]) === -1) {
+      index++;
+      linkid = Pokemon.makeID(b.id - index);
+    }
+  
   for (let i = 0; i < list.length; i++) {
     if (b.name.indexOf(list[i]) !== -1) {
       index++;
