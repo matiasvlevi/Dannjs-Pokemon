@@ -1,6 +1,7 @@
 
 // fetch data from json cdn
-fetch('https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/pokemon.json')
+//https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/pokemon.json
+fetch('./parsed/pokemon.json')
 .then(response => response.json())
 .then(data => main(data));
 

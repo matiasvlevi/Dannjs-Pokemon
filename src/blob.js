@@ -40,11 +40,62 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
   b.generation = gen;
   b.lengendary = leg;
   let linkid = Pokemon.makeID(b.id - index);
-  if (b.name.indexOf('Mega ') !== -1 || b.name.indexOf('Primal ') !== -1 || b.name.indexOf('Deoxys ' !== -1)) {
+  if (b.name.indexOf('Mega ') !== -1 && b.name.indexOf('Mega Lucario') === -1) {
     index++;
     linkid = Pokemon.makeID(b.id - index);
   }
+  let list = [
+    'Primal ',
+    'Deoxys ',
+    'Wormadam ',
+    'Mow ',
+    'Frost ',
+    'Heat ',
+    'Wash ',
+    'Fan ',
+    'Origin Forme',
+    'Standard Mode',
+    'Zen Mode',
+    'Therian Forme',
+    // 'Incarnate Forme',
+    'Resolute Forme',
+    'Pirouette Forme',
+    'Shield Forme',
+    'Small Size',
+    'Large Size',
+    'Super Size',
+    'Female',
+    'Unbound',
+    'Black ',
+    'White '
+  ]
+  for (let i = 0; i < list.length; i++) {
+    if (b.name.indexOf(list[i]) !== -1) {
+      index++;
+      linkid = Pokemon.makeID(b.id - index);
+    }
+  }
 
+  // if (b.name.indexOf('Primal ') !== -1) {
+  //   index++;
+  //   linkid = Pokemon.makeID(b.id - index);
+  // }
+  // if (b.name.indexOf('Deoxys ') !== -1) {
+  //   index++;
+  //   linkid = Pokemon.makeID(b.id - index);
+  // }
+  // if (b.name.indexOf('Wormadam ') !== -1) {
+  //   index++;
+  //   linkid = Pokemon.makeID(b.id - index);
+  // }
+  // if (b.name.indexOf('Mow ') !== -1) {
+  //   index++;
+  //   linkid = Pokemon.makeID(b.id - index);
+  // }
+  // if (b.name.indexOf('Frost ') !== -1) {
+  //   index++;
+  //   linkid = Pokemon.makeID(b.id - index);
+  // }
   b.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+linkid+".png";
   return b;
 }
