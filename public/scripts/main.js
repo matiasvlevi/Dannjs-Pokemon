@@ -11,7 +11,7 @@ function main(pokedex) {
     let index = i;
     let elem = document.createElement('div');
     let img = document.createElement('img');
-    img.textContent = pokedex[index].img;
+    img.setAttribute('src',pokedex[index].img);
     let h3name = document.createElement('h3');
     h3name.textContent = pokedex[index].name;
     let hp = document.createElement('h3');
