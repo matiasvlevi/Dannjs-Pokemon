@@ -40,7 +40,7 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
   b.generation = gen;
   b.lengendary = leg;
   let linkid = Pokemon.makeID(b.id - index);
-  if (b.name.indexOf('Mega ') !== -1 || b.name.indexOf('Primal ') !== -1) {
+  if (b.name.indexOf('Mega ') !== -1 || b.name.indexOf('Primal ') !== -1 || b.name.indexOf('Deoxys ' !== -1)) {
     index++;
     linkid = Pokemon.makeID(b.id - index);
   }
