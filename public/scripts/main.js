@@ -11,15 +11,15 @@ function main(pokedex) {
     let index = i;
     let elem = document.createElement('div');
     let img = document.createElement('img');
-    img.setAttribute('src',pokedex[index].img);
+    img.textContent = pokedex[index].img;
     let h3name = document.createElement('h3');
-    h3name.setAttribute('textContent', pokedex[index].name) 
+    h3name.textContent = pokedex[index].name;
     let hp = document.createElement('h3');
-    hp.setAttribute('textContent', " HP: " + pokedex[index].hp) 
+    hp.textContent =  " HP: " + pokedex[index].h;
     let atk = document.createElement('h3');
-    atk.setAttribute('textContent', " Atk: " + pokedex[index].attack + " / sp " + pokedex[index].attack_sp) 
+    atk.textContent = " Atk: " + pokedex[index].attack + " / sp " + pokedex[index].attack_sp;
     let def = document.createElement('h3');
-    def.setAttribute('textContent', " Def: " + pokedex[index].defense + " / sp " + pokedex[index].defense_sp) 
+    def.textContent =  " Def: " + pokedex[index].defense + " / sp " + pokedex[index].defense_sp;
     elem.appendChild(img);
     elem.appendChild(h3name);
     elem.appendChild(hp);
