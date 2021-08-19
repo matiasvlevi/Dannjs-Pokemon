@@ -19,8 +19,6 @@ function parse(path, Struct) {
 
 let pokedex = parse('./dataset/pokemon.csv', Pokemon);
 let combats = parse('./dataset/combats.csv', Combat);
-console.log(pokedex);
-
 fs.writeFileSync('./public/parsed/combats.json', JSON.stringify(combats));
 fs.writeFileSync('./public/parsed/pokemon.json', JSON.stringify(pokedex));
 
@@ -37,6 +35,10 @@ function findBiggest(pokemon) {
   let gen = 0;
   let elemarr = [];
   for (let i = 0; i < pokemon.length; i++) {
+      //filter out empty
+      elemarr = elemarr.filter(function(ele){ 
+        return ele != ''; 
+      });
     if (+pokemon[i].hp > hprec) {
       hprec = +pokemon[i].hp;
     }
@@ -58,6 +60,14 @@ function findBiggest(pokemon) {
     if (+pokemon[i].generation > gen) {
       gen = +pokemon[i].generation;
     }
+    let elem1 = elemarr.indexOf(pokemon[i].elem1);
+    if (elem1> elem1rec) {
+      elem1rec = elem1;
+    }
+    let elem2 = elemarr.indexOf(pokemon[i].elem1);
+    if (elem2> elem2rec) {
+      elem2rec = elem2;
+    }
     if (pokemon[i].lengendary == "False") {
       lengendary = 0;
     } else {
@@ -71,7 +81,7 @@ function findBiggest(pokemon) {
     }
     
   }
-  console.log(elemarr)
+
   return {
     hp: hprec,
     attack: att,
@@ -81,7 +91,8 @@ function findBiggest(pokemon) {
     speed:speed,
     elem1:elem1rec,
     elem2:elem2rec,
-    lengendary: lengendary
+    lengendary: lengendary,
+    elemarr:elemarr
   }
 }
 
@@ -97,37 +108,41 @@ function normalize(combat, pokemon) {
     } else {
       winner = 1;
     }
-    let data= {};
-    // let data = {
-    //   input: [
-    //     // Pokemon1
-    //     pokemon1.elem1/maxvalues.elem1,
-    //     pokemon1.elem2/maxvalues.elem2,
-    //     pokemon1.hp/maxvalues.hp,
-    //     pokemon1.attack/maxvalues.attack,
-    //     pokemon1.defense/maxvalues.defense,
-    //     pokemon1.attack_sp/maxvalues.attack_sp,
-    //     pokemon1.defense_sp/maxvalues.defense_sp,
-    //     pokemon1.speed/maxvalues.speed,
-    //     pokemon1.lengendary,
-    //     // Pokemon2
-    //     pokemon2.elem1/maxvalues.elem1,
-    //     pokemon2.elem2/maxvalues.elem2,
-    //     pokemon2.hp/maxvalues.hp,
-    //     pokemon2.attack/maxvalues.attack,
-    //     pokemon2.defense/maxvalues.defense,
-    //     pokemon2.attack_sp/maxvalues.attack_sp,
-    //     pokemon2.defense_sp/maxvalues.defense_sp,
-    //     pokemon2.speed/maxvalues.speed,
-    //     pokemon2.lengendary,
-    //   ],
-    //   output: [
-    //     winner
-    //   ]
-    // }
+   //let data= {};
+    let data = {
+      pokemon1:combat[i].first,
+      pokemon2:combat[i].second,
+      input: [
+        // Pokemon1
+        maxvalues.elemarr.indexOf(pokemon1.elem1)/maxvalues.elem1,
+        maxvalues.elemarr.indexOf(pokemon1.elem2)/maxvalues.elem2,
+        +(pokemon1.hp)/maxvalues.hp,
+        +(pokemon1.attack)/maxvalues.attack,
+        +(pokemon1.defense)/maxvalues.defense,
+        +(pokemon1.attack_sp)/maxvalues.attack_sp,
+        +(pokemon1.defense_sp)/maxvalues.defense_sp,
+        +(pokemon1.speed)/maxvalues.speed,
+        pokemon2.lengendary=='Flase' ? 0:1,
+        // Pokemon2
+        maxvalues.elemarr.indexOf(pokemon2.elem1)/maxvalues.elem1,
+        maxvalues.elemarr.indexOf(pokemon2.elem2)/maxvalues.elem2,
+        +(pokemon2.hp)/maxvalues.hp,
+        +(pokemon2.attack)/maxvalues.attack,
+        +(pokemon2.defense)/maxvalues.defense,
+        +(pokemon2.attack_sp)/maxvalues.attack_sp,
+        +(pokemon2.defense_sp)/maxvalues.defense_sp,
+        +(pokemon2.speed)/maxvalues.speed,
+        pokemon2.lengendary=='Flase' ? 0:1,
+      ],
+      output: [
+        winner
+      ]
+    }
     dataset.push(data);  
   }
   return dataset;
 }
 
-console.log(normalize(combats, pokedex))
+let normalizedData = normalize(combats, pokedex);
+
+fs.writeFileSync('./public/parsed/database.json', JSON.stringify(normalizedData));
