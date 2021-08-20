@@ -14,6 +14,16 @@ body {
   background-color: green;
 }
 
+@media screen and (max-width: 790px) {
+  main {
+    margin: auto;
+    justify-content: center;
+    border-color: solid blue 1px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 main {
   margin: auto;
   justify-content: center;
@@ -24,5 +34,5 @@ main {
 .pokemon {
   min-width: 250px;
   min-height: 250px;
-  margin: 15%;
+  margin: 70px;
 }
