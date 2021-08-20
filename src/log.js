@@ -1,3 +1,4 @@
+// Log with colors, how fancy is that
 module.exports = function log(text, color = "white") {
   if (color === "white") {
     console.log(text);

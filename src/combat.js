@@ -1,3 +1,4 @@
+// Combat data blob
 module.exports = class Combat {
   constructor() {}
   static createBlob(first, second, winner) {
