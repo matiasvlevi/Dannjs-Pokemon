@@ -39,7 +39,7 @@ Output:
 
 <br/><br/><br/><br/>
 
--
+---
 
 ### NPM SCRIPTS
 Run the webapp on a local server
