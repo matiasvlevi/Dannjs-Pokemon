@@ -34,6 +34,9 @@ h2 {
 h4 {
   font-size: 28px;
 }
+h5 {
+  font-size: 24px;
+}
 #name {
   font-size: 36px;
   justify-self: center;
@@ -73,8 +76,30 @@ select {
   padding: 0.5em;
   font-size: 22px;
 }
-
+#load {
+  display: flex;
+  justify-content:center;
+  position: relative;
+  top: 25%;
+}
+#signature {
+  display:flex;
+  width: fit-content;
+  float: right;
+  position: relative;
+  right: 14%
+}
 @media screen and (min-width: 990px) {
+  #signature {
+    display:flex;
+    width: fit-content;
+    float: right;
+    position: relative;
+    right: 30%
+  }
+  h5 {
+    font-size: 16px;
+  }
   #name {
     font-size: 26px;
     justify-self: center;
@@ -130,17 +155,12 @@ select {
   margin-top: 2%;
   margin-bottom: 0px;
 }
-#signature {
-  display:flex;
-  width: fit-content;
-  float: right;
-  position: relative;
-  right: 30%
-}
+
 #pre {
   padding-left: 6px;
   padding-right: 6px;
   text-align: center;
+  color: #383e56;
 }
 #sig {
   font-family: 'Comfortaa', cursive;

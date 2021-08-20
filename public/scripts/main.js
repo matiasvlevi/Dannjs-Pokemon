@@ -79,6 +79,8 @@ function selected(pokedex) {
   document.querySelector("#\\32 > #info > #guess").textContent = "Win chance: " + guess + "%";
 }
 async function main(pokedex, combats) {
+  await delay(500)
+
   window.pokedex = pokedex;
   window.combats = combats;
   console.log(combats);
@@ -106,6 +108,9 @@ async function main(pokedex, combats) {
   document.querySelector("#\\31 > #info").appendChild(selector1);
   document.querySelector("#\\32 > #info").appendChild(selector2);
   selected(pokedex);
+  document.querySelector('main').style ="display:auto";
+  document.querySelector('#link').style ="display:auto";
+  document.querySelector('#load').style ="display:none";
 }
 
 function getPokemonById(pokedex, id) {
