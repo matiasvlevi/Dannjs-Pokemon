@@ -52,7 +52,7 @@ main {
 }
 #info {
   float: right;
-  margin-right: 5%;
+  margin-right: 0%;
   position: relative;
   top: -5%;
 }
@@ -89,6 +89,9 @@ select {
   position: relative;
   right: 14%
 }
+#pokemonimg {
+  width: 380px;
+}
 @media screen and (min-width: 990px) {
   #signature {
     display:flex;
@@ -96,6 +99,9 @@ select {
     float: right;
     position: relative;
     right: 30%
+  }
+  #pokemonimg {
+    width: 200px;
   }
   h5 {
     font-size: 16px;
