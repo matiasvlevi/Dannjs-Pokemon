@@ -23,6 +23,7 @@ function selected(pokedex, num) {
   let id2 = selector2.value;
   let pokemon1 = getPokemonById(pokedex, id1);
   let pokemon2 = getPokemonById(pokedex, id2);
+
   document.querySelector("#\\31  > img").src = pokemon1.img;
   document.querySelector("#\\31  > #name").textContent = "Name: " + pokemon1.name;
   document.querySelector("#\\31  > #hp").textContent = "HP: " + pokemon1.hp;
@@ -33,6 +34,14 @@ function selected(pokedex, num) {
   document.querySelector("#\\32  > #hp").textContent = "HP: " + pokemon2.hp;
   document.querySelector("#\\32  > #atk").textContent = "Atk: " + pokemon2.attack + " / sp " + pokemon2.attack_sp;
   document.querySelector("#\\32  > #def").textContent = "Def: " + pokemon2.defense + " / sp " + pokemon2.defense_sp;
+
+
+  let input = pokemon1.normalized.concat(pokemon2.normalized);
+
+  let guess = (Math.round(pokemonDann(input)[0] * 100000) / 1000);
+  document.querySelector("#\\31 > #guess").textContent = "Win chance: " + Math.round((100 - guess) * 1000) / 1000 + "%";
+
+  document.querySelector("#\\32 > #guess").textContent = "Win chance: " + guess + "%";
 }
 async function main(pokedex, combats) {
   window.pokedex = pokedex;

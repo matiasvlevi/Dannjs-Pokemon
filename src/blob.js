@@ -4,11 +4,11 @@ class Pokemon {
   }
 }
 Pokemon.makeID = function makeID(num) {
-  let str= num.toString();
+  let str = num.toString();
   let a = 3 - str.length;
-  let ans= '';
+  let ans = '';
   for (let i = 0; i < a; i++) {
-    ans += '0'; 
+    ans += '0';
   }
   ans += num;
   return ans;
@@ -16,7 +16,7 @@ Pokemon.makeID = function makeID(num) {
 
 Pokemon.getPokemon = function getPokemon(dataset, name, prop) {
   let pokemon;
-  dataset.forEach((e)=>{
+  dataset.forEach((e) => {
     if (name == e[prop]) {
       pokemon = e;
       return;
@@ -39,6 +39,11 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
   b.speed = speed;
   b.generation = gen;
   b.lengendary = leg;
+
+
+  b.normalized = []
+
+
   let linkid = Pokemon.makeID(b.id - index);
 
   let exclude = [
@@ -71,11 +76,11 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
     'White '
   ]
 
-    if (b.name.indexOf('Mega ') !== -1 && b.name.indexOf(exclude[0]) === -1 && b.name.indexOf(exclude[1]) === -1) {
-      index++;
-      linkid = Pokemon.makeID(b.id - index);
-    }
-  
+  if (b.name.indexOf('Mega ') !== -1 && b.name.indexOf(exclude[0]) === -1 && b.name.indexOf(exclude[1]) === -1) {
+    index++;
+    linkid = Pokemon.makeID(b.id - index);
+  }
+
   for (let i = 0; i < list.length; i++) {
     if (b.name.indexOf(list[i]) !== -1) {
       index++;
@@ -83,25 +88,33 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
     }
   }
 
-  b.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/"+linkid+".png";
+  b.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + linkid + ".png";
   return b;
 }
-
+Pokemon.prototype.normalize = function normalize(maxvalues) {
+  this.normalized = [
+    // Pokemon1
+    maxvalues.elemarr.indexOf(this.elem1) / this.elem1,
+    maxvalues.elemarr.indexOf(this.elem2) / this.elem2, +(this.hp) / maxvalues.hp, +(this.attack) / maxvalues.attack, +(this.defense) / maxvalues.defense, +(this.attack_sp) / maxvalues.attack_sp, +(this.defense_sp) / maxvalues.defense_sp, +(this.speed) / maxvalues.speed,
+    this.lengendary == 'False' ? 0 : 1,
+  ]
+}
 Pokemon.prototype.toJSON = function toJSON() {
   let data = {
-   id: this.id,
-   name: this.name,
-   elem1: this.elem1,
-   elem2: this.elem2,
-   hp: this.hp,
-   attack: this.attack,
-   defense: this.defense,
-   attack_sp: this.attack_sp,
-   defense_sp: this.defense_sp,
-   speed: this.speed,
-   generation: this.generation,
-   lengendary: this.lengendary,
-   img: this.img
+    id: this.id,
+    name: this.name,
+    elem1: this.elem1,
+    elem2: this.elem2,
+    hp: this.hp,
+    attack: this.attack,
+    defense: this.defense,
+    attack_sp: this.attack_sp,
+    defense_sp: this.defense_sp,
+    speed: this.speed,
+    generation: this.generation,
+    lengendary: this.lengendary,
+    img: this.img,
+    normalized: this.normalized
   }
   return data;
 }

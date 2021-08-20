@@ -7,7 +7,9 @@
     "start": "node server.js & start http://localhost:3000",
     "parse": "node parser.js",
     "train": "node src/ai/index.js",
-    "minify": "node src/ai/toFunction.js"
+    "test": "node src/ai/tester.js",
+    "minify": "node src/ai/toFunction.js",
+    "clear": "del models"
   },
   "keywords": [],
   "author": "",
