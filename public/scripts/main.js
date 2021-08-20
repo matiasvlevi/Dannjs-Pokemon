@@ -25,15 +25,50 @@ function selected(pokedex, num) {
   let pokemon2 = getPokemonById(pokedex, id2);
 
   document.querySelector("#\\31  > img").src = pokemon1.img;
-  document.querySelector("#\\31  > #name").textContent = "Name: " + pokemon1.name;
+  document.querySelector("#\\31  > #name").textContent = pokemon1.name;
   document.querySelector("#\\31  > #hp").textContent = "HP: " + pokemon1.hp;
   document.querySelector("#\\31  > #atk").textContent = "Atk: " + pokemon1.attack + " / sp " + pokemon1.attack_sp;
   document.querySelector("#\\31  > #def").textContent = "Def: " + pokemon1.defense + " / sp " + pokemon1.defense_sp;
+
+  // Set element icons ids
+  document.querySelector("#\\31 > #elem > div:nth-child(1)").setAttribute('class', pokemon1.elem1.toLocaleLowerCase());
+  document.querySelector("#\\31 > #elem > div:nth-child(2)").setAttribute('class', pokemon1.elem2.toLocaleLowerCase());
+  document.querySelector("#\\31 > #elem > div:nth-child(1)").title = pokemon1.elem1;
+  // Set element 1
+  document.querySelector("#\\31 > #elem > div > #elem1").src = "css/icons/" + pokemon1.elem1.toLocaleLowerCase() + ".svg";
+
+  // Set element 2 if exists
+  if (pokemon1.elem2.length > 0) {
+    document.querySelector("#\\31 > #elem > div:nth-child(2) > #elem2").style = "display:auto";
+    document.querySelector("#\\31 > #elem > div:nth-child(2) > #elem2").src = "css/icons/" + pokemon1.elem2.toLocaleLowerCase() + ".svg";
+    document.querySelector("#\\31 > #elem > div:nth-child(2)").title = pokemon1.elem2;
+  } else {
+    document.querySelector("#\\31 > #elem > div:nth-child(2) > #elem2").style = "display:none";
+  }
+
+
   document.querySelector("#\\32  > img").src = pokemon2.img;
-  document.querySelector("#\\32  > #name").textContent = "Name: " + pokemon2.name;
+  document.querySelector("#\\32  > #name").textContent = pokemon2.name;
   document.querySelector("#\\32  > #hp").textContent = "HP: " + pokemon2.hp;
   document.querySelector("#\\32  > #atk").textContent = "Atk: " + pokemon2.attack + " / sp " + pokemon2.attack_sp;
   document.querySelector("#\\32  > #def").textContent = "Def: " + pokemon2.defense + " / sp " + pokemon2.defense_sp;
+
+  // Set element icons ids
+  document.querySelector("#\\32 > #elem > div:nth-child(1)").setAttribute('class', pokemon2.elem1.toLocaleLowerCase());
+  document.querySelector("#\\32 > #elem > div:nth-child(2)").setAttribute('class', pokemon2.elem2.toLocaleLowerCase());
+  document.querySelector("#\\32 > #elem > div:nth-child(1)").title = pokemon2.elem1;
+
+  // Set element 1
+  document.querySelector("#\\32 > #elem > div > #elem1").src = "css/icons/" + pokemon2.elem1.toLocaleLowerCase() + ".svg";
+
+  // Set element 2 if exists
+  if (pokemon2.elem2.length > 0) {
+    document.querySelector("#\\32 > #elem > div > #elem2").style = "display:auto";
+    document.querySelector("#\\32 > #elem > div > #elem2").src = "css/icons/" + pokemon2.elem2.toLocaleLowerCase() + ".svg";
+    document.querySelector("#\\32 > #elem > div:nth-child(2)").title = pokemon2.elem2;
+  } else {
+    document.querySelector("#\\32 > #elem > div > #elem2").style = "display:none";
+  }
 
 
   let input = pokemon1.normalized.concat(pokemon2.normalized);
@@ -71,15 +106,6 @@ async function main(pokedex, combats) {
   document.querySelector("#\\31 ").appendChild(selector1);
   document.querySelector("#\\32 ").appendChild(selector2);
   selected(pokedex);
-  // let id1 = selector1.value;
-  // let id1 = selector2.value;
-  // let pokemon1 = getPokemonById(pokedex, id1);
-  // let pokemon2 = getPokemonById(pokedex, id2);
-  // document.querySelector("#\\31  > img").src = getPokemonById(pokedex, pokemon1).img;
-  // document.querySelector("#\\32  > img").src = getPokemonById(pokedex, pokemon2).img;
-
-
-
 }
 
 function getPokemonById(pokedex, id) {
