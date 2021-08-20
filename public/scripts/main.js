@@ -79,7 +79,7 @@ function selected(pokedex) {
   document.querySelector("#\\32 > #info > #guess").textContent = "Win chance: " + guess + "%";
 }
 async function main(pokedex, combats) {
-  await delay(500)
+  await delay(50)
 
   window.pokedex = pokedex;
   window.combats = combats;
