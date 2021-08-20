@@ -1,15 +1,12 @@
-
-
-
 body {
   margin: 0px;
 }
 
 .winIcon {
-  min-width:40px;
-  min-height:40px;
+  min-width: 40px;
+  min-height: 40px;
   height: 40px;
-  width:40px;
+  width: 40px;
   background-color: transparent;
 }
 
@@ -18,15 +15,14 @@ body {
 }
 
 main {
-  margin:auto;
+  margin: auto;
   justify-content: center;
-  border-color: solid blue 1px ;
-  display:flex;
-  flex-wrap: wrap;
+  border-color: solid blue 1px;
+  display: flex;
 }
 
 .pokemon {
   min-width: 250px;
   min-height: 250px;
-  margin:15%;
+  margin: 15%;
 }
