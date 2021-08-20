@@ -2,7 +2,7 @@ const Dann = require('dannjs').dann;
 const fs = require('fs');
 const log = require('../log');
 
-let modelspath = './models/';
+let modelspath = '../models/';
 // If 'models' directory doesnt exist, create it.
 if (!fs.existsSync(modelspath)) {
   fs.mkdirSync(modelspath);
@@ -31,7 +31,7 @@ if (modelsSaved.length > 0) {
   log('Loaded ' + filename, 'yellow')
 } else {
   // Create new model
-  nn = require('./model');
+  nn = require('../../model');
   log('Created new model', 'yellow')
 }
 
