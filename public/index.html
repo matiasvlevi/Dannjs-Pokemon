@@ -1,17 +1,30 @@
 <html>
 
 <head>
-  <script src="https://cdn.jsdelivr.net/gh/matiasvlevi/dann@latest/build/dann.min.js"></script>
+
+
+  <!-- facebook card -->
+  <meta name="og:title" content="Dannjs-pokemon" />
+  <meta name="og:image" content="assets/thumbnail.png" />
+  <meta name="og:description" content="Ai guesses who wins a pokemon combat." />
+  <!-- facebook card -->
+
+  <!-- twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@matias92570710" />
+  <meta name="twitter:creator" content="@matias92570710" />
+  <meta name="twitter:description" content="Ai guesses who wins a pokemon combat." />
+  <meta name="twitter:image:src" content="assets/thumbnail.png" />
+  <meta name="twitter:text:title" content="Dannjs-pokemon" />
+
   <script src="scripts/main.js"></script>
   <script src="scripts/minifiedModel.js"></script>
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Merriweather:wght@700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap&family=Comfortaa:wght@700" rel="stylesheet">
+
 </head>
 
 <body>
@@ -23,33 +36,34 @@
     <div class="pokemon" id="1">
       <h4 id="name">Name</h4>
       <img src="" alt="">
-      <h2 id="guess"></h2>
-      <div id="elem">
-        <div id="icons"><img src="" id="elem1" width="20px"></div>
-        <div id="icons"><img src="" id="elem2" width="20px"></div>
-        
-        
+      <div id="info">
+        <h2 id="guess"></h2>
+        <div id="elem">
+          <div id="icons"><img src="" id="elem1" width="20px"></div>
+          <div id="icons"><img src="" id="elem2" width="20px"></div>
+        </div>
+        <h4 id="hp">hp</h4>
+        <h4 id="atk">atk</h4>
+        <h4 id="def">def</h4>
       </div>
-      <h4 id="hp">hp</h4>
-      <h4 id="atk">atk</h4>
-      <h4 id="def">def</h4>
     </div>
     <div class="pokemon" id="2">
       <h4 id="name">Name</h4>
       <img src="" alt="">
-      <h2 id="guess"></h2>
-      <div id="elem">
-        <div id="icons"><img src="" id="elem1" width="20px"></div>
-        <div id="icons"><img src="" id="elem2" width="20px"></div>
-        
-        
+      <div id="info">
+        <h2 id="guess"></h2>
+        <div id="elem">
+          <div id="icons"><img src="" id="elem1" width="20px"></div>
+          <div id="icons"><img src="" id="elem2" width="20px"></div>
+        </div>
+        <h4 id="hp">hp</h4>
+        <h4 id="atk">atk</h4>
+        <h4 id="def">def</h4>
       </div>
-      <h4 id="hp">hp</h4>
-      <h4 id="atk">atk</h4>
-      <h4 id="def">def</h4>
     </div>
 
   </main>
+
   <a href="https://dannjs.org" target="_blank" title="Dannjs Homepage">
     <span id="signature">  <h4 id="pre">Powered by </h4> <h4 id="sig">Dann.js</h4></span>
   </a>
