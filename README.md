@@ -1,8 +1,8 @@
 # Dannjs Pokemon Combat Guesser
 
 
-A Dann model learns to predict pokemon combat winners.
-
+A Dann model learns to predict pokemon combat winners.<br/>
+[Try it out!](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v0.5.0/public/index.html)
 
 <br/><br/>
 
