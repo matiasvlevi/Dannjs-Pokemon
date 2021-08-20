@@ -2,14 +2,14 @@ const Dann = require('dannjs').dann;
 const fs = require('fs');
 const log = require('../log');
 
-let modelspath = '../models/';
+let modelspath = './models/';
 // If 'models' directory doesnt exist, create it.
 if (!fs.existsSync(modelspath)) {
   fs.mkdirSync(modelspath);
 }
 // Read all file names in models directory
 let modelsSaved = fs.readdirSync(modelspath);
-
+console.log(modelsSaved)
 let nn;
 if (modelsSaved.length > 0) {
   // Find most trained model
