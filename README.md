@@ -1,9 +1,5 @@
-# Dannjs-Pokemon
+# Dannjs Pokemon Combat Guesser
 
-[Dataset showcase](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v0.1.0/public/index.html)
-
-
-[Dann Guesses Combas winner](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v0.4.0/public/index.html)
 
 A Dann model learns to predict pokemon combat winners.
 
@@ -36,6 +32,16 @@ Inputs:
 Output:
  0: Winner (Boolean)
 ```
+
+<br/>
+
+### Links
+
+[Dataset](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v0.1.0/public/index.html)
+
+[Combat dataset](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v0.2.0/public/index.html)
+
+[Dann Guesses Combas winner](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v0.5.0/public/index.html)
 
 <br/><br/><br/><br/>
 
