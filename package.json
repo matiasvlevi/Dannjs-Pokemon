@@ -9,7 +9,7 @@
     "train": "node src/ai/index.js",
     "test": "node src/ai/tester.js",
     "minify": "node src/ai/toFunction.js",
-    "clear": "del models"
+    "clear": " echo deleting all models & del models"
   },
   "keywords": [],
   "author": "",

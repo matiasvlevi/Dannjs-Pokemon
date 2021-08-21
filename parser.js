@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Pokemon = require('./src/blob');
+const Pokemon = require('./src/pokemon');
 const Combat = require('./src/combat');
 
 function parse(path, Struct) {
@@ -119,7 +119,8 @@ function normalize(combat, pokemon) {
       input: [
         // Pokemon1
         maxvalues.elemarr.indexOf(pokemon1.elem1) / maxvalues.elem1,
-        maxvalues.elemarr.indexOf(pokemon1.elem2) / maxvalues.elem2, +(pokemon1.hp) / maxvalues.hp, +(pokemon1.attack) / maxvalues.attack, +(pokemon1.defense) / maxvalues.defense, +(pokemon1.attack_sp) / maxvalues.attack_sp, +(pokemon1.defense_sp) / maxvalues.defense_sp, +(pokemon1.speed) / maxvalues.speed,
+        maxvalues.elemarr.indexOf(pokemon1.elem2) / maxvalues.elem2,
+         +(pokemon1.hp) / maxvalues.hp, +(pokemon1.attack) / maxvalues.attack, +(pokemon1.defense) / maxvalues.defense, +(pokemon1.attack_sp) / maxvalues.attack_sp, +(pokemon1.defense_sp) / maxvalues.defense_sp, +(pokemon1.speed) / maxvalues.speed,
         pokemon1.lengendary == 'False' ? 0 : 1,
         // Pokemon2
         maxvalues.elemarr.indexOf(pokemon2.elem1) / maxvalues.elem1,
