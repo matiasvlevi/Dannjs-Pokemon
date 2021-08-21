@@ -1,11 +1,11 @@
 // fetch data from json cdn
 //https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/pokemon.json
-fetch('./parsed/pokemon.json')
+fetch('https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/pokemon.json')
   .then(response => response.json())
   .then(data => fetchCombat(data));
 
 function fetchCombat(pokedex) {
-  fetch('./parsed/database.json')
+  fetch('https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/database.json')
     .then(response => response.json())
     .then(data => main(pokedex, data))
 }
