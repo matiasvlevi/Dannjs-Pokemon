@@ -2,7 +2,7 @@
 
 
 A Dann model learns to predict pokemon combat winners.<br/>
-[Try it out!](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/v1.0.0/public/index.html)
+[Try it out!](https://raw.githack.com/matiasvlevi/Dannjs-Pokemon/main/public/index.html)
 <div align="center">
 <img src="public/assets/screen1.png" width="400px">
 <img src="public/assets/screen2.png" width="400px">
