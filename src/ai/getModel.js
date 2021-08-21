@@ -9,7 +9,6 @@ if (!fs.existsSync(modelspath)) {
 }
 // Read all file names in models directory
 let modelsSaved = fs.readdirSync(modelspath);
-console.log(modelsSaved)
 let nn;
 if (modelsSaved.length > 0) {
   // Find most trained model
