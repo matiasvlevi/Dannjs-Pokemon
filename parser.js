@@ -1,6 +1,9 @@
 const fs = require('fs');
 const Pokemon = require('./src/pokemon');
 const Combat = require('./src/combat');
+const swap = require('./src/swapFirstAttack');
+const findBiggest = require('./src/findBiggest');
+let select = require('./src/selectedDataset');
 
 function parse(path, Struct) {
   let csv = fs.readFileSync(path).toString();
@@ -27,87 +30,19 @@ let combats = parse('./dataset/combats.csv', Combat);
 fs.writeFileSync('./public/parsed/combats.json', JSON.stringify(combats));
 fs.writeFileSync('./public/parsed/pokemon.json', JSON.stringify(pokedex));
 
-function findBiggest(pokemon) {
-  let elem1rec = 0;
-  let elem2rec = 0;
-  let hprec = 0;
-  let att = 0;
-  let def = 0;
-  let spa = 0;
-  let spd = 0;
-  let speed = 0;
-  let lengendary = 0;
-  let gen = 0;
-  let elemarr = [];
-  for (let i = 0; i < pokemon.length; i++) {
-    //filter out empty
-    elemarr = elemarr.filter(function(ele) {
-      return ele != '';
-    });
-    if (+pokemon[i].hp > hprec) {
-      hprec = +pokemon[i].hp;
-    }
-    if (+pokemon[i].attack > att) {
-      att = +pokemon[i].attack;
-    }
-    if (+pokemon[i].defense > def) {
-      def = +pokemon[i].defense;
-    }
-    if (+pokemon[i].attack_sp > spa) {
-      spa = +pokemon[i].attack_sp;
-    }
-    if (+pokemon[i].defense_sp > spd) {
-      spd = +pokemon[i].defense_sp;
-    }
-    if (+pokemon[i].speed > speed) {
-      speed = +pokemon[i].speed;
-    }
-    if (+pokemon[i].generation > gen) {
-      gen = +pokemon[i].generation;
-    }
-    let elem1 = elemarr.indexOf(pokemon[i].elem1);
-    if (elem1 > elem1rec) {
-      elem1rec = elem1;
-    }
-    let elem2 = elemarr.indexOf(pokemon[i].elem1);
-    if (elem2 > elem2rec) {
-      elem2rec = elem2;
-    }
-    if (pokemon[i].lengendary == "False") {
-      lengendary = 0;
-    } else {
-      lengendary = 1;
-    }
-    if (elemarr.indexOf(pokemon[i].elem1) === -1) {
-      elemarr.push(pokemon[i].elem1)
-    }
-    if (elemarr.indexOf(pokemon[i].elem2) === -1) {
-      elemarr.push(pokemon[i].elem2)
-    }
-
-  }
-
-  return {
-    hp: hprec,
-    attack: att,
-    defense: def,
-    attack_sp: spa,
-    defense_sp: spd,
-    speed: speed,
-    elem1: elem1rec,
-    elem2: elem2rec,
-    lengendary: lengendary,
-    elemarr: elemarr
-  }
-}
 
 function normalize(combat, pokemon) {
   let maxvalues = findBiggest(pokemon);
+  console.log(maxvalues)
   let dataset = [];
+  let onlyCharmanderSquirtleLine = [];
+
   for (let i = 0; i < combat.length; i++) {
-    let winner = 0;
+
     let pokemon1 = Pokemon.getPokemon(pokemon, Pokemon.makeID(combat[i].first), 'id');
     let pokemon2 = Pokemon.getPokemon(pokemon, Pokemon.makeID(combat[i].second), 'id');
+
+    let winner = 0;
     if (combat[i].first === combat[i].winner) {
       winner = 0;
     } else {
@@ -116,27 +51,45 @@ function normalize(combat, pokemon) {
     let data = {
       pokemon1: Pokemon.makeID(combat[i].first),
       pokemon2: Pokemon.makeID(combat[i].second),
-      input: [
-        // Pokemon1
-        maxvalues.elemarr.indexOf(pokemon1.elem1) / maxvalues.elem1,
-        maxvalues.elemarr.indexOf(pokemon1.elem2) / maxvalues.elem2,
-         +(pokemon1.hp) / maxvalues.hp, +(pokemon1.attack) / maxvalues.attack, +(pokemon1.defense) / maxvalues.defense, +(pokemon1.attack_sp) / maxvalues.attack_sp, +(pokemon1.defense_sp) / maxvalues.defense_sp, +(pokemon1.speed) / maxvalues.speed,
-        pokemon1.lengendary == 'False' ? 0 : 1,
-        // Pokemon2
-        maxvalues.elemarr.indexOf(pokemon2.elem1) / maxvalues.elem1,
-        maxvalues.elemarr.indexOf(pokemon2.elem2) / maxvalues.elem2, +(pokemon2.hp) / maxvalues.hp, +(pokemon2.attack) / maxvalues.attack, +(pokemon2.defense) / maxvalues.defense, +(pokemon2.attack_sp) / maxvalues.attack_sp, +(pokemon2.defense_sp) / maxvalues.defense_sp, +(pokemon2.speed) / maxvalues.speed,
-        pokemon2.lengendary == 'False' ? 0 : 1,
-      ],
+      input: pokemon1.normalized.concat(pokemon2.normalized),
       output: [
         winner
       ]
     }
+
+    for (let j = 0; j < select.length; j++) {
+      if (data.pokemon1 === select[j]) {
+        for (let k = 0; k < select.length; k++) {
+          if (data.pokemon2 === select[k]) {
+            console.log(pokemon1.name, pokemon1.id)
+            console.log(pokemon2.name, pokemon2.id)
+            onlyCharmanderSquirtleLine.push(data)
+          }
+        }
+      }
+    }
+
     dataset.push(data);
   }
-  return dataset;
+
+
+
+  let newSelected = [];
+  for (data of onlyCharmanderSquirtleLine) {
+    newSelected.push(data);
+    newSelected.push(swap(data));
+  }
+  console.log('Dataset length: ', dataset.length);
+  console.log('Selected set length: ', newSelected.length);
+  console.log(newSelected)
+  return [dataset, newSelected];
 }
 
 let normalizedData = normalize(combats, pokedex);
+let database = JSON.stringify(normalizedData[0]);
+let onlyCharmanderSquirtleLine = JSON.stringify(normalizedData[1]);
 
 
-fs.writeFileSync('./public/parsed/database.json', JSON.stringify(normalizedData));
+
+fs.writeFileSync('./public/parsed/database.json', database);
+fs.writeFileSync('./public/parsed/selectPokemon.json', onlyCharmanderSquirtleLine);

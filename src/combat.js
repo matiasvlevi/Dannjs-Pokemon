@@ -8,4 +8,9 @@ module.exports = class Combat {
     b.winner = winner;
     return b;
   }
+  swap() {
+    let temp = this.first;
+    this.first = this.second;
+    this.second = temp;
+  }
 }

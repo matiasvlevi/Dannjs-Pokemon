@@ -1,7 +1,11 @@
+const Pokemon = require('../pokemon');
+
 function logProgress(min, max, text) {
+  let len = max.toString().length;
+  let m = Pokemon.makeID(min, len);
   console.log(
     '[' +
-    min +
+    m +
     '/' +
     max +
     '] ' +

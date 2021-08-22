@@ -9,6 +9,8 @@
     "train": "node src/ai/index.js",
     "test": "node src/ai/tester.js",
     "minify": "node src/ai/toFunction.js",
+    "lr": "node src/ai/lr.js",
+    "strain": "node src/ai/trainSelected.js",
     "clear": " echo deleting all models & del models"
   },
   "keywords": [],

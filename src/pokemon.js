@@ -2,9 +2,9 @@ class Pokemon {
   constructor() {}
 }
 // Convert a number to a 3 character string
-Pokemon.makeID = function makeID(num) {
+Pokemon.makeID = function makeID(num, count = 3) {
   let str = num.toString();
-  let a = 3 - str.length;
+  let a = count - str.length;
   let ans = '';
   for (let i = 0; i < a; i++) {
     ans += '0';
@@ -32,7 +32,7 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
     b.id = Pokemon.makeID(id);
     b.name = name;
     b.elem1 = elem1;
-    b.elem2 = elem2;
+    b.elem2 = elem2.length > 0 ? elem2 : 'None';
     b.hp = hp;
     b.attack = att;
     b.defense = def;
@@ -93,11 +93,11 @@ Pokemon.createBlob = function createBlob(id, name, elem1, elem2, hp, att, def, a
     b.img = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + linkid + ".png";
     return b;
   }
-  // Divide value by the maximum encountered value
+  // Divide value by the maximum encountered value in dataset
 Pokemon.prototype.normalize = function normalize(maxvalues) {
   this.normalized = [
-    maxvalues.elemarr.indexOf(this.elem1) / this.elem1,
-    maxvalues.elemarr.indexOf(this.elem2) / this.elem2, +(this.hp) / maxvalues.hp, +(this.attack) / maxvalues.attack, +(this.defense) / maxvalues.defense, +(this.attack_sp) / maxvalues.attack_sp, +(this.defense_sp) / maxvalues.defense_sp, +(this.speed) / maxvalues.speed,
+    maxvalues.elemarr.indexOf(this.elem1) / maxvalues.elem1,
+    maxvalues.elemarr.indexOf(this.elem2) / maxvalues.elem2, +(this.hp) / maxvalues.hp, +(this.attack) / maxvalues.attack, +(this.defense) / maxvalues.defense, +(this.attack_sp) / maxvalues.attack_sp, +(this.defense_sp) / maxvalues.defense_sp, +(this.speed) / maxvalues.speed,
     this.lengendary == 'False' ? 0 : 1,
   ]
 }

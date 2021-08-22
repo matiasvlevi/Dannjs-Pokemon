@@ -1,11 +1,15 @@
 // fetch data from json cdn
 //https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/pokemon.json
-fetch('https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/pokemon.json')
+
+
+// web url
+// https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/
+fetch('parsed/pokemon.json')
   .then(response => response.json())
   .then(data => fetchCombat(data));
 
 function fetchCombat(pokedex) {
-  fetch('https://raw.githubusercontent.com/matiasvlevi/Dannjs-Pokemon/main/public/parsed/database.json')
+  fetch('parsed/database.json')
     .then(response => response.json())
     .then(data => main(pokedex, data))
 }
@@ -38,7 +42,7 @@ function selected(pokedex) {
   document.querySelector("#\\31 > #info > #elem > div > #elem1").src = "css/icons/" + pokemon1.elem1.toLocaleLowerCase() + ".svg";
 
   // Set element 2 if exists
-  if (pokemon1.elem2.length > 0) {
+  if (pokemon1.elem2 !== 'None') {
     document.querySelector("#\\31 > #info > #elem > div:nth-child(2) > #elem2").style = "display:auto";
     document.querySelector("#\\31 > #info > #elem > div:nth-child(2) > #elem2").src = "css/icons/" + pokemon1.elem2.toLocaleLowerCase() + ".svg";
     document.querySelector("#\\31 > #info > #elem > div:nth-child(2)").title = pokemon1.elem2;
@@ -62,7 +66,7 @@ function selected(pokedex) {
   document.querySelector("#\\32 > #info > #elem > div > #elem1").src = "css/icons/" + pokemon2.elem1.toLocaleLowerCase() + ".svg";
 
   // Set element 2 if exists
-  if (pokemon2.elem2.length > 0) {
+  if (pokemon2.elem2 !== 'None') {
     document.querySelector("#\\32 > #info > #elem > div > #elem2").style = "display:auto";
     document.querySelector("#\\32 > #info > #elem > div > #elem2").src = "css/icons/" + pokemon2.elem2.toLocaleLowerCase() + ".svg";
     document.querySelector("#\\32 > #info > #elem > div:nth-child(2)").title = pokemon2.elem2;
@@ -72,7 +76,6 @@ function selected(pokedex) {
 
 
   let input = pokemon1.normalized.concat(pokemon2.normalized);
-
   let guess = (Math.round(pokemonDann(input)[0] * 100000) / 1000);
   document.querySelector("#\\31 > #info > #guess").textContent = "Win chance: " + Math.round((100 - guess) * 1000) / 1000 + "%";
 
@@ -108,9 +111,9 @@ async function main(pokedex, combats) {
   document.querySelector("#\\31 > #info").appendChild(selector1);
   document.querySelector("#\\32 > #info").appendChild(selector2);
   selected(pokedex);
-  document.querySelector('main').style ="display:auto";
-  document.querySelector('#link').style ="display:auto";
-  document.querySelector('#load').style ="display:none";
+  document.querySelector('main').style = "display:auto";
+  document.querySelector('#link').style = "display:auto";
+  document.querySelector('#load').style = "display:none";
 }
 
 function getPokemonById(pokedex, id) {
