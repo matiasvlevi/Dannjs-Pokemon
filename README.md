@@ -40,8 +40,7 @@ Output:
 ```
 
 <br/>
-Dataset from :
-https://www.kaggle.com/tuannguyenvananh/pokemon-dataset-with-team-combat
+The dataset can be found [here](https://www.kaggle.com/tuannguyenvananh/pokemon-dataset-with-team-combat)
 
 ### Links
 
